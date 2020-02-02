@@ -5,6 +5,7 @@ using UnityEngine;
 public class IntroCutscene : MonoBehaviour
 {
     public GameObject dialogPrefab;
+    public GameObject explosionPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,24 +15,36 @@ public class IntroCutscene : MonoBehaviour
     IEnumerator cutscene()
     {
         GameObject player = GameObject.Find("Player");
+        GameObject skelly = GameObject.Find("SkellyGuy");
+        GameObject skellyHead = GameObject.Find("skelly-head");
+        GameObject skellyPieces = GameObject.Find("skelly-pieces");
         //player.GetComponent<ClickToMove>().enabled = true;
+        skellyHead.SetActive(false);
+        skellyPieces.SetActive(false);
 
         yield return new WaitForSeconds(3);
         showDialog(player, "Boss is home!!!", true);
         yield return new WaitForSeconds(6);
-        GameObject skelly = GameObject.Find("SkellyGuy");
         Animator skellyAnimator = skelly.GetComponent<Animator>();
         skellyAnimator.Play("SkellyWalkIn");
         StartCoroutine(MoveTo(skelly, new Vector3(0, 0, -1.58f), 2));
         yield return new WaitForSeconds(2);
         skellyAnimator.Play("SkellyIdle");
         showDialog(player, "Welcome home!!!", true);
-        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(4.5f);
         showDialog(skelly, "I feel...", true);
-        yield return new WaitForSeconds(4);
-        showDialog(skelly, "Overwhelmed...", true);
+        yield return new WaitForSeconds(3.5f);
+        GameObject e = Instantiate(explosionPrefab, skelly.transform.position, Quaternion.identity);
+        e.transform.position += new Vector3(0, 1, 0);
+        yield return new WaitForSeconds(0.2f);
+        showDialog(player, "Boss!!!", true);
+        skelly.SetActive(false);
+        skellyHead.SetActive(true);
+        skellyPieces.SetActive(true);
+        yield return new WaitForSeconds(1.8f);
+        showDialog(skellyHead, "Overwhelmed...", true);
         yield return new WaitForSeconds(6);
-        showDialog(skelly, "I could use some food...", false);
+        showDialog(skellyHead, "I could use some food...", false);
         yield return new WaitForSeconds(4);
         player.GetComponent<ClickToMove>().enabled = true;
     }
@@ -57,6 +70,7 @@ public class IntroCutscene : MonoBehaviour
             textMesh = dialogObject.GetComponent<TextMesh>();
         }
         textMesh.text = text;
+        textMesh.transform.position = new Vector3(textMesh.transform.position.x, 2, textMesh.transform.position.z);
         if (autoHide)
         {
             StartCoroutine(hideTextAfter(textMesh, 0.25f * text.Length));

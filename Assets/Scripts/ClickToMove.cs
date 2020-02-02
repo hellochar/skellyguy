@@ -78,8 +78,8 @@ public class ClickToMove : MonoBehaviour {
     {
         Ray ray = new Ray(transform.position, new Vector3(0, -1, 0));
         RaycastHit hitInfo;
-        Physics.Raycast(ray, out hitInfo, 10, groundMask);
-        if (hitInfo.transform != null)
+        bool hit = Physics.Raycast(ray, out hitInfo, 10, groundMask);
+        if (hit)
         {
             return hitInfo.transform.gameObject;
         } else
