@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.1
-    agentHeight: 0.5
-    agentSlope: 45
-    agentClimb: 0.4
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 60
+    agentClimb: 2
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.033333335
+    cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -127,7 +127,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 97054610}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &52606870
+--- !u!64 &52606873
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,6 +141,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -2432090755550338912, guid: 16e6be6b98ea6e3468ea6fea93253f1a, type: 3}
+--- !u!114 &52606874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52606869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6335d80add892784294ff41074d41288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 1583548821}
 --- !u!1001 &97054610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,6 +233,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16e6be6b98ea6e3468ea6fea93253f1a, type: 3}
+--- !u!1 &482344218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 482344219}
+  m_Layer: 0
+  m_Name: HallwayCameraTransform (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &482344219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482344218}
+  m_LocalRotation: {x: -0.013593572, y: 0.98628396, z: -0.10822703, w: -0.123879634}
+  m_LocalPosition: {x: 1.4325566, y: 2.16, z: -0.16817474}
+  m_LocalScale: {x: 1.2583014, y: 1.2582998, z: 1.258301}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &514191678
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +423,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1981170712}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &652867868
+--- !u!64 &652867871
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -394,6 +437,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -2432090755550338912, guid: 51692efa38eb03640ad530d9a9d9fa8a, type: 3}
+--- !u!114 &652867872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652867867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6335d80add892784294ff41074d41288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 1063743462}
 --- !u!1 &905903800
 GameObject:
   m_ObjectHideFlags: 0
@@ -668,6 +724,36 @@ Transform:
   - {fileID: 1772673681}
   m_Father: {fileID: 0}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1063743461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063743462}
+  m_Layer: 0
+  m_Name: LobbyCameraTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1063743462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063743461}
+  m_LocalRotation: {x: -0.0048753917, y: 0.9673701, z: -0.018667666, w: -0.2526318}
+  m_LocalPosition: {x: 1.1722612, y: 2.2301817, z: 12.713697}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1101676495
 GameObject:
@@ -5593,6 +5679,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1583548820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1583548821}
+  m_Layer: 0
+  m_Name: KitchenCameraTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1583548821
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583548820}
+  m_LocalRotation: {x: -0.52464485, y: 0.04834005, z: -0.029856892, w: -0.8494231}
+  m_LocalPosition: {x: -10.0427065, y: 5.6785665, z: 6.8446445}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1593887130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5765,7 +5881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1688554655}
   m_Layer: 0
-  m_Name: HallwayCameraPosition
+  m_Name: HallwayCameraTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5779,7 +5895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688554654}
   m_LocalRotation: {x: -0.013593572, y: 0.98628396, z: -0.10822703, w: -0.123879634}
-  m_LocalPosition: {x: 1.4325566, y: 2.16, z: -0.16817474}
+  m_LocalPosition: {x: 1.4325566, y: 2.16, z: 6.85}
   m_LocalScale: {x: 1.2583014, y: 1.2582998, z: 1.258301}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10657,6 +10773,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -2432090755550338912, guid: 574a03a50cfd8b8439bfaf8c37269dab, type: 3}
+--- !u!114 &1859759921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859759916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6335d80add892784294ff41074d41288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 0}
 --- !u!1001 &1949807620
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10727,7 +10856,7 @@ PrefabInstance:
     - target: {fileID: 2534866581884222612, guid: 574a03a50cfd8b8439bfaf8c37269dab,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 574a03a50cfd8b8439bfaf8c37269dab, type: 3}
@@ -10922,6 +11051,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -2432090755550338912, guid: 8380066ee89558046a66c418a37dc202, type: 3}
+--- !u!114 &2060009780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060009775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6335d80add892784294ff41074d41288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 1688554655}
 --- !u!1001 &2089688478
 PrefabInstance:
   m_ObjectHideFlags: 0

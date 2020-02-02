@@ -40,8 +40,9 @@ public class ClickToMove : MonoBehaviour {
         CameraView view = currentRoomDefault.GetComponent<CameraView>();
         if (view != null)
         {
-            Camera.main.transform.position = view.view.position;
-            Camera.main.transform.rotation = view.view.rotation;
+            Transform transform = Camera.main.transform;
+            transform.position = Vector3.Lerp(transform.position, view.view.position, 0.2f);
+            transform.rotation = Quaternion.Lerp(transform.rotation, view.view.rotation, 0.2f);
         }
     }
 
