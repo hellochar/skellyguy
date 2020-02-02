@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class ClickToMove : MonoBehaviour {
 
     public LayerMask groundMask;
+    public LayerMask itemMask;
     NavMeshAgent agent;
     public GameObject spawnee;
     // Start is called before the first frame update
@@ -21,11 +22,20 @@ public class ClickToMove : MonoBehaviour {
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
-            bool hit = Physics.Raycast(ray, out hitInfo, 1000, groundMask);
-            if (hit)
+            bool hitItem = Physics.Raycast(ray, out hitInfo, 1000, itemMask);
+            if (hitItem)
             {
-                agent.SetDestination(hitInfo.point);
-                GameObject gameObject1 = Instantiate(spawnee, hitInfo.point, Quaternion.identity);
+                // pick up item
+                Debug.Log(hitInfo.transform.gameObject.name);
+            }
+            else
+            {
+                bool hitGround = Physics.Raycast(ray, out hitInfo, 1000, groundMask);
+                if (hitGround)
+                {
+                    agent.SetDestination(hitInfo.point);
+                    GameObject gameObject1 = Instantiate(spawnee, hitInfo.point, Quaternion.identity);
+                }
             }
         }
         maybeUpdateCamera();
@@ -33,8 +43,9 @@ public class ClickToMove : MonoBehaviour {
 
     void maybeUpdateCamera()
     {
-        GameObject currentRoomDefault = getCurrentRoom();
-        CameraView view = currentRoomDefault.GetComponent<CameraView>();
+        GameObject currentRoom = getCurrentRoom();
+        CameraView view = currentRoom.GetComponent<CameraView>();
+        Debug.Log(view.view.transform.name);
         if (view != null)
         {
             Transform transform = Camera.main.transform;

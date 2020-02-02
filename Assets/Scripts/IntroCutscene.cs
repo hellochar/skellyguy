@@ -44,7 +44,7 @@ public class IntroCutscene : MonoBehaviour
         textMesh.text = text;
         if (autoHide)
         {
-            StartCoroutine(hideTextAfter(textMesh, 0.3f * text.Length));
+            StartCoroutine(hideTextAfter(textMesh, 0.25f * text.Length));
         }
     }
 
