@@ -24,14 +24,11 @@ public class ClickToMove : MonoBehaviour {
             bool hit = Physics.Raycast(ray, out hitInfo, 1000, groundMask);
             if (hit)
             {
-                Debug.Log(hitInfo.point);
                 agent.SetDestination(hitInfo.point);
                 GameObject gameObject1 = Instantiate(spawnee, hitInfo.point, Quaternion.identity);
             }
         }
         maybeUpdateCamera();
-        
-        Debug.Log(getCurrentRoom());
     }
 
     void maybeUpdateCamera()
