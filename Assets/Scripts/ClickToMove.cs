@@ -15,6 +15,22 @@ public class ClickToMove : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
     }
 
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    GameObject obj = collision.transform.gameObject;
+    //    Debug.Log(obj.layer);
+    //    if (obj.layer == itemMask)
+    //    {
+    //    }
+    //}
+
+    void pickUp(GameObject obj)
+    {
+        // parent the item onto the bat
+        obj.transform.SetParent(this.transform);
+        obj.transform.localPosition = new Vector3(0, 1.5f, 0.5f);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -27,14 +43,15 @@ public class ClickToMove : MonoBehaviour {
             {
                 // pick up item
                 Debug.Log(hitInfo.transform.gameObject.name);
+                pickUp(hitInfo.transform.gameObject);
             }
-            else
+            else 
             {
                 bool hitGround = Physics.Raycast(ray, out hitInfo, 1000, groundMask);
                 if (hitGround)
                 {
                     agent.SetDestination(hitInfo.point);
-                    GameObject gameObject1 = Instantiate(spawnee, hitInfo.point, Quaternion.identity);
+                    Instantiate(spawnee, hitInfo.point, Quaternion.identity);
                 }
             }
         }
@@ -44,13 +61,15 @@ public class ClickToMove : MonoBehaviour {
     void maybeUpdateCamera()
     {
         GameObject currentRoom = getCurrentRoom();
-        CameraView view = currentRoom.GetComponent<CameraView>();
-        Debug.Log(view.view.transform.name);
-        if (view != null)
+        if (currentRoom != null)
         {
-            Transform transform = Camera.main.transform;
-            transform.position = Vector3.Lerp(transform.position, view.view.position, 0.2f);
-            transform.rotation = Quaternion.Lerp(transform.rotation, view.view.rotation, 0.2f);
+            CameraView view = currentRoom.GetComponent<CameraView>();
+            if (view != null)
+            {
+                Transform transform = Camera.main.transform;
+                transform.position = Vector3.Lerp(transform.position, view.view.position, 0.2f);
+                transform.rotation = Quaternion.Lerp(transform.rotation, view.view.rotation, 0.2f);
+            }
         }
     }
 
@@ -60,7 +79,12 @@ public class ClickToMove : MonoBehaviour {
         Ray ray = new Ray(transform.position, new Vector3(0, -1, 0));
         RaycastHit hitInfo;
         Physics.Raycast(ray, out hitInfo, 10, groundMask);
-        // Debug.Log(hitInfo.transform.gameObject.transform.parent);
-        return hitInfo.transform.gameObject;
+        if (hitInfo.transform != null)
+        {
+            return hitInfo.transform.gameObject;
+        } else
+        {
+            return null;
+        }
     }
 }

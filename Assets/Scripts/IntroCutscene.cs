@@ -13,14 +13,18 @@ public class IntroCutscene : MonoBehaviour
 
     IEnumerator cutscene()
     {
-        yield return new WaitForSeconds(3);
         GameObject player = GameObject.Find("Player");
+        //player.GetComponent<ClickToMove>().enabled = true;
+
+        yield return new WaitForSeconds(3);
         showDialog(player, "Boss is home!!!", true);
         yield return new WaitForSeconds(6);
         GameObject skelly = GameObject.Find("SkellyGuy");
         Animator skellyAnimator = skelly.GetComponent<Animator>();
         skellyAnimator.Play("SkellyWalkIn");
+        StartCoroutine(MoveTo(skelly, new Vector3(0, 0, -1.58f), 2));
         yield return new WaitForSeconds(2);
+        skellyAnimator.Play("SkellyIdle");
         showDialog(player, "Welcome home!!!", true);
         yield return new WaitForSeconds(6);
         showDialog(skelly, "I feel...", true);
@@ -32,6 +36,18 @@ public class IntroCutscene : MonoBehaviour
         player.GetComponent<ClickToMove>().enabled = true;
     }
 
+    IEnumerator MoveTo(GameObject obj, Vector3 target, float time)
+    {
+        float now = Time.time;
+        Vector3 start = obj.transform.position;
+        while(Time.time - now < time)
+        {
+            float t = (Time.time - now) / time;
+            obj.transform.position = Vector3.Lerp(start, target, t);
+            yield return null;
+        }
+    }
+
     void showDialog(GameObject obj, string text, bool autoHide)
     {
         TextMesh textMesh = obj.GetComponentInChildren<TextMesh>();
@@ -40,7 +56,6 @@ public class IntroCutscene : MonoBehaviour
             GameObject dialogObject = Instantiate(dialogPrefab, obj.transform);
             textMesh = dialogObject.GetComponent<TextMesh>();
         }
-        Debug.Log(textMesh);
         textMesh.text = text;
         if (autoHide)
         {
