@@ -42,9 +42,11 @@ public class IntroCutscene : MonoBehaviour
         skellyHead.SetActive(true);
         skellyPieces.SetActive(true);
         yield return new WaitForSeconds(1.8f);
-        showDialog(skellyHead, "Overwhelmed...", true);
-        yield return new WaitForSeconds(6);
-        showDialog(skellyHead, "I could use some food...", false);
+        showDialog(skellyHead, "Overwhelmed!!!", true);
+        yield return new WaitForSeconds(4);
+        showDialog(skellyHead, "I could use some food...", true);
+        yield return new WaitForSeconds(5);
+        showDialog(skellyHead, "Carry me to the kitchen!", false);
         yield return new WaitForSeconds(4);
         player.GetComponent<ClickToMove>().enabled = true;
     }
