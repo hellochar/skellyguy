@@ -68,12 +68,19 @@ public class IntroCutscene : MonoBehaviour
 
     void showDialog(GameObject obj, string text, bool autoHide)
     {
+        AudioSource source = obj.GetComponent<AudioSource>();
+        if (source != null)
+        {
+            source.Play();
+        }
+
         TextMesh textMesh = obj.GetComponentInChildren<TextMesh>();
         if (textMesh == null)
         {
             GameObject dialogObject = Instantiate(dialogPrefab, obj.transform);
             textMesh = dialogObject.GetComponent<TextMesh>();
         }
+
         textMesh.text = text;
         textMesh.transform.position = new Vector3(textMesh.transform.position.x, 2, textMesh.transform.position.z);
         if (autoHide)

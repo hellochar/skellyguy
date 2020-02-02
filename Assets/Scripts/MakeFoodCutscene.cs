@@ -68,7 +68,7 @@ public class MakeFoodCutscene : MonoBehaviour
         StartCoroutine(ScaleTo(flambe, new Vector3(0, 0, 0), 0.2f));
         yield return new WaitForSeconds(1f);
 
-        skellyHead.transform.Find("Particle System").gameObject.SetActive(false);
+        //skellyHead.transform.Find("Particle System").gameObject.SetActive(false);
 
         // you win!
         showDialog(skellyHead, "You win!!!", false);
