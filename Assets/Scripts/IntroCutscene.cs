@@ -37,17 +37,20 @@ public class IntroCutscene : MonoBehaviour
         GameObject e = Instantiate(explosionPrefab, skelly.transform.position, Quaternion.identity);
         e.transform.position += new Vector3(0, 1, 0);
         yield return new WaitForSeconds(0.2f);
-        showDialog(player, "Boss!!!", true);
         skelly.SetActive(false);
         skellyHead.SetActive(true);
         skellyPieces.SetActive(true);
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(0.3f);
+        showDialog(player, "Boss!!!", true);
+        yield return new WaitForSeconds(1.5f);
         showDialog(skellyHead, "Overwhelmed!!!", true);
         yield return new WaitForSeconds(4);
         showDialog(skellyHead, "I could use some food...", true);
-        yield return new WaitForSeconds(5);
-        showDialog(skellyHead, "Carry me to the kitchen!", false);
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(6);
+        showDialog(skellyHead, "To the kitchen!", false);
+        yield return new WaitForSeconds(2);
+        player.GetComponent<ClickToMove>().pickUp(skellyHead);
+        yield return new WaitForSeconds(2);
         player.GetComponent<ClickToMove>().enabled = true;
     }
 

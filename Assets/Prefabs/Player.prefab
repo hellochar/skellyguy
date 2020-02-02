@@ -197,7 +197,12 @@ MonoBehaviour:
   itemMask:
     serializedVersion: 2
     m_Bits: 512
+  dropItemMask:
+    serializedVersion: 2
+    m_Bits: 1024
   spawnee: {fileID: 5156743752620273855, guid: ed46502d8584b6f4a9d582970c58b309, type: 3}
+  makeFoodCutscene: {fileID: 1774699842596887963, guid: c2fbc959ced89ed4a9081989294880b3,
+    type: 3}
 --- !u!65 &5669954324627976315
 BoxCollider:
   m_ObjectHideFlags: 0
